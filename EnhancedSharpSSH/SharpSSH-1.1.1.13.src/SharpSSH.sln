@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSSH", "SharpSSH\SharpS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffieHellman", "..\DiffieHellman\DiffieHellman.csproj", "{51A5DB78-BDDF-466D-911D-FCD600413726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharepSSHTest", "SharepSSHTest\SharepSSHTest.csproj", "{34C203C5-1AA4-435F-8A9B-42F0B5F80292}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSSHTest", "SharpSSHTest\SharpSSHTest.csproj", "{34C203C5-1AA4-435F-8A9B-42F0B5F80292}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

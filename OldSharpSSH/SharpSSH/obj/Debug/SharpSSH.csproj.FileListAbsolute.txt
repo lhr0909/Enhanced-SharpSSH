@@ -1,8 +1,0 @@
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\bin\Debug\Tamir.SharpSSH.dll
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\bin\Debug\Tamir.SharpSSH.pdb
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\SharpSSH\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\SharpSSH\obj\Debug\Tamir.SharpSsh.jsch.examples.InputForm.resources
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\SharpSSH\obj\Debug\ResGen.read.1.tlog
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\SharpSSH\obj\Debug\ResGen.write.1.tlog
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\SharpSSH\obj\Debug\Tamir.SharpSSH.dll
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\SharpSSH\obj\Debug\Tamir.SharpSSH.pdb

@@ -1,8 +1,0 @@
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\bin\Debug\sharpSshTest.exe
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\bin\Debug\sharpSshTest.pdb
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\Examples\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\Examples\obj\Debug\sharpSshTest.jsch_samples.InputForm.resources
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\Examples\obj\Debug\ResGen.read.1.tlog
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\Examples\obj\Debug\ResGen.write.1.tlog
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\Examples\obj\Debug\sharpSshTest.exe
-C:\Users\grimesjm\Desktop\SharpSSH\OldSharpSSH\Examples\obj\Debug\sharpSshTest.pdb

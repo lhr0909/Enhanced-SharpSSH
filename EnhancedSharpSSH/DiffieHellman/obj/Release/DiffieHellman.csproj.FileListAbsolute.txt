@@ -1,4 +1,0 @@
-C:\Users\grimesjm\Desktop\SharpSSH\DiffieHellman\bin\Release\DiffieHellman.dll
-C:\Users\grimesjm\Desktop\SharpSSH\DiffieHellman\bin\Release\out.xml
-C:\Users\grimesjm\Desktop\SharpSSH\DiffieHellman\obj\Release\ResolveAssemblyReference.cache
-C:\Users\grimesjm\Desktop\SharpSSH\DiffieHellman\obj\Release\DiffieHellman.dll
