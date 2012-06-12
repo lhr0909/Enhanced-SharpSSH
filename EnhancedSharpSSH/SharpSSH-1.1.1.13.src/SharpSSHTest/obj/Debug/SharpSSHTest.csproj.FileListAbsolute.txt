@@ -1,0 +1,2 @@
+C:\Users\grimesjm\Desktop\SharpSSH\Enhanced-SharpSSH\EnhancedSharpSSH\SharpSSH-1.1.1.13.src\SharpSSHTest\obj\Debug\SharepSSHTest.exe
+C:\Users\grimesjm\Desktop\SharpSSH\Enhanced-SharpSSH\EnhancedSharpSSH\SharpSSH-1.1.1.13.src\SharpSSHTest\obj\Debug\SharepSSHTest.pdb

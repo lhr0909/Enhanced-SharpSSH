@@ -1,0 +1,7 @@
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\bin\Release\SharepSSHTest.exe
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\bin\Release\SharepSSHTest.pdb
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\bin\Release\DiffieHellman.dll
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\bin\Release\Tamir.SharpSsh.dll
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\obj\Release\ResolveAssemblyReference.cache
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\obj\Release\SharepSSHTest.exe
+C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharepSSHTest\obj\Release\SharepSSHTest.pdb

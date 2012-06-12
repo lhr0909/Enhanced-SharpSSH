@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SharpSSH">
+</Property><Property Name="Solution File" Value="C:\Users\grimesjm\Desktop\SharpSSH\SharpSSH-1.1.1.13.src\SharpSSH.sln">
+</Property><Property Name="Date" Value="Tuesday, June 12, 2012">
+</Property><Property Name="Time" Value="9:24 AM">
+</Property></Properties><Event ErrorLevel="0" Project="SharpSSH" Source="SharpSSH\SharpSSH.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SharpSSH" Source="SharpSSH\SharpSSH.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DiffieHellman" Source="..\DiffieHellman\DiffieHellman.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DiffieHellman" Source="..\DiffieHellman\DiffieHellman.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SharepSSHTest" Source="SharepSSHTest\SharepSSHTest.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SharepSSHTest" Source="SharepSSHTest\SharepSSHTest.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SharpSSH.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="SharpSSH.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SharpSSH" Source="SharpSSH\SharpSSH.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="DiffieHellman" Source="..\DiffieHellman\DiffieHellman.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="SharepSSHTest" Source="SharepSSHTest\SharepSSHTest.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
