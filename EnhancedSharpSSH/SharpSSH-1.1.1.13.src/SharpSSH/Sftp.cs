@@ -137,16 +137,22 @@ namespace Tamir.SharpSsh
 			SftpChannel.mkdir(directory);
 		}
 
-        public void Delete(string file)
+        //Rm
+
+        public void Rm(string file)
         {
             SftpChannel.rm(file);
             
         }
 
-        public void Deletedir(string directoryPath)
+        //RmDir
+
+        public void Rmdir(string directoryPath)
         {
             SftpChannel.rmdir(directoryPath);
         }
+
+        //Rename
 
         public void Rename(string oldPath, string newPath)
         {
@@ -165,6 +171,20 @@ namespace Tamir.SharpSsh
 			}
 			return list;
 		}
+
+        //Check Existence
+        public bool Exists(string path)
+        {
+            try
+            {
+                ArrayList list = GetFileList(path);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
 
 		#region ProgressMonitor Implementation
 
