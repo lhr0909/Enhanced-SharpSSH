@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffieHellman", "..\DiffieH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSSHTest", "SharpSSHTest\SharpSSHTest.csproj", "{34C203C5-1AA4-435F-8A9B-42F0B5F80292}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{327E25D4-D8DF-4704-ABA3-274F8E777847}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{34C203C5-1AA4-435F-8A9B-42F0B5F80292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34C203C5-1AA4-435F-8A9B-42F0B5F80292}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34C203C5-1AA4-435F-8A9B-42F0B5F80292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327E25D4-D8DF-4704-ABA3-274F8E777847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327E25D4-D8DF-4704-ABA3-274F8E777847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327E25D4-D8DF-4704-ABA3-274F8E777847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327E25D4-D8DF-4704-ABA3-274F8E777847}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

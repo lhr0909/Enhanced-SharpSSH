@@ -130,11 +130,20 @@ namespace Tamir.SharpSsh
 			SftpChannel.put(fromFilePath, toFilePath, m_monitor, ChannelSftp.OVERWRITE);
 		}
 
-		//MkDir
+		//MkDir (now it makes directories recursively)
 
-		public override  void Mkdir(string directory)
+		public override void Mkdir(string directory)
 		{
-			SftpChannel.mkdir(directory);
+            string[] paths = directory.Split('/');
+            string finalPath = ".";
+            foreach (string path in paths)
+            {
+                finalPath += ("/" + path);
+                if (!Exists(finalPath))
+                {
+                    SftpChannel.mkdir(finalPath);
+                }
+            }
 		}
 
         //Rm
@@ -142,14 +151,13 @@ namespace Tamir.SharpSsh
         public void Rm(string file)
         {
             SftpChannel.rm(file);
-            
         }
 
         //RmDir
 
-        public void Rmdir(string directoryPath)
+        public void Rmdir(string directory)
         {
-            SftpChannel.rmdir(directoryPath);
+            SftpChannel.rmdir(directory);
         }
 
         //Rename
@@ -157,20 +165,19 @@ namespace Tamir.SharpSsh
         public void Rename(string oldPath, string newPath)
         {
             SftpChannel.rename(oldPath, newPath);
-            
         }
 
 		//Ls
 
-		public ArrayList GetFileList(string path)
-		{
-			ArrayList list = new ArrayList();
-			foreach(Tamir.SharpSsh.jsch.ChannelSftp.LsEntry entry in SftpChannel.ls(path))
-			{
-				list.Add(entry.getFilename().ToString());
-			}
-			return list;
-		}
+        public ArrayList GetFileList(string path)
+        {
+            ArrayList list = new ArrayList();
+            foreach(Tamir.SharpSsh.jsch.ChannelSftp.LsEntry entry in SftpChannel.ls(path))
+            {
+                list.Add(entry.getFilename().ToString());
+            }
+            return list;
+        }
 
         //Check Existence
         public bool Exists(string path)
