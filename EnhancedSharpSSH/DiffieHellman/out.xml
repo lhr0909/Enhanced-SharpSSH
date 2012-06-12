@@ -4,6 +4,253 @@
         <name>DiffieHellman</name>
     </assembly>
     <members>
+        <member name="T:Tamir.Encryption.Math.Prime.Generator.NextPrimeFinder">
+            <summary>
+            Finds the next prime after a given number.
+            </summary>
+        </member>
+        <member name="M:Tamir.Encryption.Math.Prime.Generator.PrimeGeneratorBase.PostTrialDivisionTests(Tamir.Encryption.Math.BigInteger)">
+            <summary>
+            Performs primality tests on bi, assumes trial division has been done.
+            </summary>
+            <param name="bi">A BigInteger that has been subjected to and passed trial division</param>
+            <returns>False if bi is composite, true if it may be prime.</returns>
+            <remarks>The speed of this method is dependent on Confidence</remarks>
+        </member>
+        <member name="T:Tamir.Encryption.DiffieHellman">
+            <summary>
+            Defines a base class from which all Diffie-Hellman implementations inherit.
+            </summary>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.Create">
+            <summary>
+            Creates an instance of the default implementation of the <see cref="T:Tamir.Encryption.DiffieHellman"/> algorithm.
+            </summary>
+            <returns>A new instance of the default implementation of DiffieHellman.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.Create(System.String)">
+            <summary>
+            Creates an instance of the specified implementation of <see cref="T:Tamir.Encryption.DiffieHellman"/>.
+            </summary>
+            <param name="algName">The name of the implementation of DiffieHellman to use.</param>
+            <returns>A new instance of the specified implementation of DiffieHellman.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellman"/> instance.
+            </summary>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.CreateKeyExchange">
+            <summary>
+            When overridden in a derived class, creates the key exchange data. 
+            </summary>
+            <returns>The key exchange data to be sent to the intended recipient.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.DecryptKeyExchange(System.Byte[])">
+            <summary>
+            When overridden in a derived class, extracts secret information from the key exchange data.
+            </summary>
+            <param name="keyEx">The key exchange data within which the secret information is hidden.</param>
+            <returns>The secret information derived from the key exchange data.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.ExportParameters(System.Boolean)">
+            <summary>
+            When overridden in a derived class, exports the <see cref="T:Tamir.Encryption.DHParameters"/>.
+            </summary>
+            <param name="includePrivate"><b>true</b> to include private parameters; otherwise, <b>false</b>.</param>
+            <returns>The parameters for Diffie-Hellman.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.ImportParameters(Tamir.Encryption.DHParameters)">
+            <summary>
+            When overridden in a derived class, imports the specified <see cref="T:Tamir.Encryption.DHParameters"/>.
+            </summary>
+            <param name="parameters">The parameters for Diffie-Hellman.</param>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.FromXmlString(System.String)">
+            <summary>
+            Reconstructs a <see cref="T:Tamir.Encryption.DiffieHellman"/> object from an XML string.
+            </summary>
+            <param name="xmlString">The XML string to use to reconstruct the DiffieHellman object.</param>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">One of the values in the XML string is invalid.</exception>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellman.ToXmlString(System.Boolean)">
+            <summary>
+            Creates and returns an XML string representation of the current <see cref="T:Tamir.Encryption.DiffieHellman"/> object.
+            </summary>
+            <param name="includePrivateParameters"><b>true</b> to include private parameters; otherwise, <b>false</b>.</param>
+            <returns>An XML string encoding of the current DiffieHellman object.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.Math.Prime.PrimalityTests.RabinMillerTest(Tamir.Encryption.Math.BigInteger,Tamir.Encryption.Math.Prime.ConfidenceFactor)">
+            <summary>
+                Probabilistic prime test based on Rabin-Miller's test
+            </summary>
+            <param name="bi" type="BigInteger.BigInteger">
+                <para>
+                    The number to test.
+                </para>
+            </param>
+            <param name="confidence" type="int">
+                <para>
+            The number of chosen bases. The test has at least a
+            1/4^confidence chance of falsely returning True.
+                </para>
+            </param>
+            <returns>
+            <para>
+            	True if "this" is a strong pseudoprime to randomly chosen bases.
+            </para>
+            <para>
+            	False if "this" is definitely NOT prime.
+            </para>
+            </returns>
+        </member>
+        <member name="T:Tamir.Encryption.DiffieHellmanManaged">
+            <summary>
+            Implements the Diffie-Hellman algorithm.
+            </summary>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
+            </summary>
+            <remarks>The default length of the shared secret is 1024 bits.</remarks>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor(System.Int32,System.Int32,Tamir.Encryption.DHKeyGeneration)">
+            <summary>
+            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
+            </summary>
+            <param name="bitlen">The length, in bits, of the public P parameter.</param>
+            <param name="l">The length, in bits, of the secret value X. This parameter can be set to 0 to use the default size.</param>
+            <param name="keygen">One of the <see cref="T:Tamir.Encryption.DHKeyGeneration"/> values.</param>
+            <remarks>The larger the bit length, the more secure the algorithm is. The default is 1024 bits. The minimum bit length is 128 bits.<br/>The size of the private value will be one fourth of the bit length specified.</remarks>
+            <exception cref="T:System.ArgumentException">The specified bit length is invalid.</exception>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor(System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
+            </summary>
+            <param name="p">The P parameter of the Diffie-Hellman algorithm. This is a public parameter.</param>
+            <param name="g">The G parameter of the Diffie-Hellman algorithm. This is a public parameter.</param>
+            <param name="x">The X parameter of the Diffie-Hellman algorithm. This is a private parameter. If this parameters is a null reference (<b>Nothing</b> in Visual Basic), a secret value of the default size will be generated.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="p"/> or <paramref name="g"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="p"/> or <paramref name="g"/> is invalid.</exception>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor(System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
+            </summary>
+            <param name="p">The P parameter of the Diffie-Hellman algorithm.</param>
+            <param name="g">The G parameter of the Diffie-Hellman algorithm.</param>
+            <param name="l">The length, in bits, of the private value. If 0 is specified, the default value will be used.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="p"/> or <paramref name="g"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="l"/> is invalid.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="p"/> or <paramref name="g"/> is invalid.</exception>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.CreateKeyExchange">
+            <summary>
+            Creates the key exchange data.
+            </summary>
+            <returns>The key exchange data to be sent to the intended recipient.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.DecryptKeyExchange(System.Byte[])">
+            <summary>
+            Extracts secret information from the key exchange data.
+            </summary>
+            <param name="keyEx">The key exchange data within which the shared key is hidden.</param>
+            <returns>The shared key derived from the key exchange data.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the SymmetricAlgorithm and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.ExportParameters(System.Boolean)">
+            <summary>
+            Exports the <see cref="T:Tamir.Encryption.DHParameters"/>.
+            </summary>
+            <param name="includePrivateParameters"><b>true</b> to include private parameters; otherwise, <b>false</b>.</param>
+            <returns>The parameters for <see cref="T:Tamir.Encryption.DiffieHellman"/>.</returns>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.ImportParameters(Tamir.Encryption.DHParameters)">
+            <summary>
+            Imports the specified <see cref="T:Tamir.Encryption.DHParameters"/>.
+            </summary>
+            <param name="parameters">The parameters for <see cref="T:Tamir.Encryption.DiffieHellman"/>.</param>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="P"/> or <paramref name="G"/> is a null reference (<b>Nothing</b> in Visual Basic) -or- <paramref name="P"/> is not a prime number.</exception>
+        </member>
+        <member name="M:Tamir.Encryption.DiffieHellmanManaged.Finalize">
+            <summary>
+            Releases the unmanaged resources used by the SymmetricAlgorithm.
+            </summary>
+        </member>
+        <member name="P:Tamir.Encryption.DiffieHellmanManaged.KeyExchangeAlgorithm">
+            <summary>
+            Gets the name of the key exchange algorithm.
+            </summary>
+            <value>The name of the key exchange algorithm.</value>
+        </member>
+        <member name="P:Tamir.Encryption.DiffieHellmanManaged.SignatureAlgorithm">
+            <summary>
+            Gets the name of the signature algorithm.
+            </summary>
+            <value>The name of the signature algorithm.</value>
+        </member>
+        <member name="T:Tamir.Encryption.Math.Prime.ConfidenceFactor">
+            <summary>
+            A factor of confidence.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.ExtraLow">
+            <summary>
+            Only suitable for development use, probability of failure may be greater than 1/2^20.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.Low">
+            <summary>
+            Suitable only for transactions which do not require forward secrecy.  Probability of failure about 1/2^40
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.Medium">
+            <summary>
+            Designed for production use. Probability of failure about 1/2^80.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.High">
+            <summary>
+            Suitable for sensitive data. Probability of failure about 1/2^160.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.ExtraHigh">
+            <summary>
+            Use only if you have lots of time! Probability of failure about 1/2^320.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.Provable">
+            <summary>
+            Only use methods which generate provable primes. Not yet implemented.
+            </summary>
+        </member>
+        <member name="T:Tamir.Encryption.DHParameters">
+            <summary>
+            Represents the parameters of the Diffie-Hellman algorithm.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.DHParameters.P">
+            <summary>
+            Represents the public <b>P</b> parameter of the Diffie-Hellman algorithm.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.DHParameters.G">
+            <summary>
+            Represents the public <b>G</b> parameter of the Diffie-Hellman algorithm.
+            </summary>
+        </member>
+        <member name="F:Tamir.Encryption.DHParameters.X">
+            <summary>
+            Represents the private <b>X</b> parameter of the Diffie-Hellman algorithm.
+            </summary>
+        </member>
         <member name="F:Tamir.Encryption.Math.BigInteger.DEFAULT_LEN">
             <summary>
             Default length of a BigInteger in bytes
@@ -140,19 +387,6 @@
             y [yOffset:yOffset+yLen], and d [dOffset:dOffset+mod].
             </remarks>
         </member>
-        <member name="T:Tamir.Encryption.Math.Prime.Generator.NextPrimeFinder">
-            <summary>
-            Finds the next prime after a given number.
-            </summary>
-        </member>
-        <member name="M:Tamir.Encryption.Math.Prime.Generator.PrimeGeneratorBase.PostTrialDivisionTests(Tamir.Encryption.Math.BigInteger)">
-            <summary>
-            Performs primality tests on bi, assumes trial division has been done.
-            </summary>
-            <param name="bi">A BigInteger that has been subjected to and passed trial division</param>
-            <returns>False if bi is composite, true if it may be prime.</returns>
-            <remarks>The speed of this method is dependent on Confidence</remarks>
-        </member>
         <member name="T:Tamir.Encryption.DHKeyGeneration">
             <summary>
             Defines the different Diffie-Hellman key generation methods.
@@ -173,240 +407,6 @@
             Because this method uses fixed values for the P and G parameters, not all bit sizes are supported.
             The current implementation supports bit sizes of 768, 1024 and 1536.
             </summary>
-        </member>
-        <member name="T:Tamir.Encryption.Math.Prime.ConfidenceFactor">
-            <summary>
-            A factor of confidence.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.ExtraLow">
-            <summary>
-            Only suitable for development use, probability of failure may be greater than 1/2^20.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.Low">
-            <summary>
-            Suitable only for transactions which do not require forward secrecy.  Probability of failure about 1/2^40
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.Medium">
-            <summary>
-            Designed for production use. Probability of failure about 1/2^80.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.High">
-            <summary>
-            Suitable for sensitive data. Probability of failure about 1/2^160.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.ExtraHigh">
-            <summary>
-            Use only if you have lots of time! Probability of failure about 1/2^320.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.Math.Prime.ConfidenceFactor.Provable">
-            <summary>
-            Only use methods which generate provable primes. Not yet implemented.
-            </summary>
-        </member>
-        <member name="T:Tamir.Encryption.DiffieHellmanManaged">
-            <summary>
-            Implements the Diffie-Hellman algorithm.
-            </summary>
-        </member>
-        <member name="T:Tamir.Encryption.DiffieHellman">
-            <summary>
-            Defines a base class from which all Diffie-Hellman implementations inherit.
-            </summary>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.Create">
-            <summary>
-            Creates an instance of the default implementation of the <see cref="T:Tamir.Encryption.DiffieHellman"/> algorithm.
-            </summary>
-            <returns>A new instance of the default implementation of DiffieHellman.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.Create(System.String)">
-            <summary>
-            Creates an instance of the specified implementation of <see cref="T:Tamir.Encryption.DiffieHellman"/>.
-            </summary>
-            <param name="algName">The name of the implementation of DiffieHellman to use.</param>
-            <returns>A new instance of the specified implementation of DiffieHellman.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.#ctor">
-            <summary>
-            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellman"/> instance.
-            </summary>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.CreateKeyExchange">
-            <summary>
-            When overridden in a derived class, creates the key exchange data. 
-            </summary>
-            <returns>The key exchange data to be sent to the intended recipient.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.DecryptKeyExchange(System.Byte[])">
-            <summary>
-            When overridden in a derived class, extracts secret information from the key exchange data.
-            </summary>
-            <param name="keyEx">The key exchange data within which the secret information is hidden.</param>
-            <returns>The secret information derived from the key exchange data.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.ExportParameters(System.Boolean)">
-            <summary>
-            When overridden in a derived class, exports the <see cref="T:Tamir.Encryption.DHParameters"/>.
-            </summary>
-            <param name="includePrivate"><b>true</b> to include private parameters; otherwise, <b>false</b>.</param>
-            <returns>The parameters for Diffie-Hellman.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.ImportParameters(Tamir.Encryption.DHParameters)">
-            <summary>
-            When overridden in a derived class, imports the specified <see cref="T:Tamir.Encryption.DHParameters"/>.
-            </summary>
-            <param name="parameters">The parameters for Diffie-Hellman.</param>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.FromXmlString(System.String)">
-            <summary>
-            Reconstructs a <see cref="T:Tamir.Encryption.DiffieHellman"/> object from an XML string.
-            </summary>
-            <param name="xmlString">The XML string to use to reconstruct the DiffieHellman object.</param>
-            <exception cref="T:System.Security.Cryptography.CryptographicException">One of the values in the XML string is invalid.</exception>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellman.ToXmlString(System.Boolean)">
-            <summary>
-            Creates and returns an XML string representation of the current <see cref="T:Tamir.Encryption.DiffieHellman"/> object.
-            </summary>
-            <param name="includePrivateParameters"><b>true</b> to include private parameters; otherwise, <b>false</b>.</param>
-            <returns>An XML string encoding of the current DiffieHellman object.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor">
-            <summary>
-            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
-            </summary>
-            <remarks>The default length of the shared secret is 1024 bits.</remarks>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor(System.Int32,System.Int32,Tamir.Encryption.DHKeyGeneration)">
-            <summary>
-            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
-            </summary>
-            <param name="bitlen">The length, in bits, of the public P parameter.</param>
-            <param name="l">The length, in bits, of the secret value X. This parameter can be set to 0 to use the default size.</param>
-            <param name="keygen">One of the <see cref="T:Tamir.Encryption.DHKeyGeneration"/> values.</param>
-            <remarks>The larger the bit length, the more secure the algorithm is. The default is 1024 bits. The minimum bit length is 128 bits.<br/>The size of the private value will be one fourth of the bit length specified.</remarks>
-            <exception cref="T:System.ArgumentException">The specified bit length is invalid.</exception>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor(System.Byte[],System.Byte[],System.Byte[])">
-            <summary>
-            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
-            </summary>
-            <param name="p">The P parameter of the Diffie-Hellman algorithm. This is a public parameter.</param>
-            <param name="g">The G parameter of the Diffie-Hellman algorithm. This is a public parameter.</param>
-            <param name="x">The X parameter of the Diffie-Hellman algorithm. This is a private parameter. If this parameters is a null reference (<b>Nothing</b> in Visual Basic), a secret value of the default size will be generated.</param>
-            <exception cref="T:System.ArgumentNullException"><paramref name="p"/> or <paramref name="g"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
-            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="p"/> or <paramref name="g"/> is invalid.</exception>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.#ctor(System.Byte[],System.Byte[],System.Int32)">
-            <summary>
-            Initializes a new <see cref="T:Tamir.Encryption.DiffieHellmanManaged"/> instance.
-            </summary>
-            <param name="p">The P parameter of the Diffie-Hellman algorithm.</param>
-            <param name="g">The G parameter of the Diffie-Hellman algorithm.</param>
-            <param name="l">The length, in bits, of the private value. If 0 is specified, the default value will be used.</param>
-            <exception cref="T:System.ArgumentNullException"><paramref name="p"/> or <paramref name="g"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
-            <exception cref="T:System.ArgumentException"><paramref name="l"/> is invalid.</exception>
-            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="p"/> or <paramref name="g"/> is invalid.</exception>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.CreateKeyExchange">
-            <summary>
-            Creates the key exchange data.
-            </summary>
-            <returns>The key exchange data to be sent to the intended recipient.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.DecryptKeyExchange(System.Byte[])">
-            <summary>
-            Extracts secret information from the key exchange data.
-            </summary>
-            <param name="keyEx">The key exchange data within which the shared key is hidden.</param>
-            <returns>The shared key derived from the key exchange data.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.Dispose(System.Boolean)">
-            <summary>
-            Releases the unmanaged resources used by the SymmetricAlgorithm and optionally releases the managed resources.
-            </summary>
-            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.ExportParameters(System.Boolean)">
-            <summary>
-            Exports the <see cref="T:Tamir.Encryption.DHParameters"/>.
-            </summary>
-            <param name="includePrivateParameters"><b>true</b> to include private parameters; otherwise, <b>false</b>.</param>
-            <returns>The parameters for <see cref="T:Tamir.Encryption.DiffieHellman"/>.</returns>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.ImportParameters(Tamir.Encryption.DHParameters)">
-            <summary>
-            Imports the specified <see cref="T:Tamir.Encryption.DHParameters"/>.
-            </summary>
-            <param name="parameters">The parameters for <see cref="T:Tamir.Encryption.DiffieHellman"/>.</param>
-            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="P"/> or <paramref name="G"/> is a null reference (<b>Nothing</b> in Visual Basic) -or- <paramref name="P"/> is not a prime number.</exception>
-        </member>
-        <member name="M:Tamir.Encryption.DiffieHellmanManaged.Finalize">
-            <summary>
-            Releases the unmanaged resources used by the SymmetricAlgorithm.
-            </summary>
-        </member>
-        <member name="P:Tamir.Encryption.DiffieHellmanManaged.KeyExchangeAlgorithm">
-            <summary>
-            Gets the name of the key exchange algorithm.
-            </summary>
-            <value>The name of the key exchange algorithm.</value>
-        </member>
-        <member name="P:Tamir.Encryption.DiffieHellmanManaged.SignatureAlgorithm">
-            <summary>
-            Gets the name of the signature algorithm.
-            </summary>
-            <value>The name of the signature algorithm.</value>
-        </member>
-        <member name="T:Tamir.Encryption.DHParameters">
-            <summary>
-            Represents the parameters of the Diffie-Hellman algorithm.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.DHParameters.P">
-            <summary>
-            Represents the public <b>P</b> parameter of the Diffie-Hellman algorithm.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.DHParameters.G">
-            <summary>
-            Represents the public <b>G</b> parameter of the Diffie-Hellman algorithm.
-            </summary>
-        </member>
-        <member name="F:Tamir.Encryption.DHParameters.X">
-            <summary>
-            Represents the private <b>X</b> parameter of the Diffie-Hellman algorithm.
-            </summary>
-        </member>
-        <member name="M:Tamir.Encryption.Math.Prime.PrimalityTests.RabinMillerTest(Tamir.Encryption.Math.BigInteger,Tamir.Encryption.Math.Prime.ConfidenceFactor)">
-            <summary>
-                Probabilistic prime test based on Rabin-Miller's test
-            </summary>
-            <param name="bi" type="BigInteger.BigInteger">
-                <para>
-                    The number to test.
-                </para>
-            </param>
-            <param name="confidence" type="int">
-                <para>
-            The number of chosen bases. The test has at least a
-            1/4^confidence chance of falsely returning True.
-                </para>
-            </param>
-            <returns>
-            <para>
-            	True if "this" is a strong pseudoprime to randomly chosen bases.
-            </para>
-            <para>
-            	False if "this" is definitely NOT prime.
-            </para>
-            </returns>
         </member>
     </members>
 </doc>
