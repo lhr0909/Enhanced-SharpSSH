@@ -169,22 +169,46 @@ namespace Tamir.SharpSsh
 
         //Ls
 
-        public ArrayList GetFileList(string path)
+        public string[] GetFileList(string path)
+        {
+            ArrayList list = this.Ls(path);
+            string[] names = new string[list.Count];
+            for (int i = 0; i < names.Length; i++)
+            {
+                names[i] = ((Tamir.SharpSsh.jsch.ChannelSftp.LsEntry)list[i]).getFilename().ToString();
+            }
+            return names;
+        }
+
+        public long[] GetFileSizes(string path)
+        {
+            ArrayList list = this.Ls(path);
+            long[] sizes = new long[list.Count];
+            for (int i = 0; i < sizes.Length; i++)
+            {
+                sizes[i] = ((Tamir.SharpSsh.jsch.ChannelSftp.LsEntry)list[i]).getAttrs().getSize();
+            }
+            return sizes;
+        }
+
+        public ArrayList Ls(string path)
         {
             ArrayList list = new ArrayList();
             foreach (Tamir.SharpSsh.jsch.ChannelSftp.LsEntry entry in SftpChannel.ls(path))
             {
-                list.Add(entry.getFilename().ToString());
+                list.Add(entry);
             }
             return list;
         }
+
+
 
         //Check Existence
         public bool Exists(string path)
         {
             try
             {
-                ArrayList list = GetFileList(path);
+                string[] list = GetFileList(path);
                 return true;
             }
             catch (Exception e)

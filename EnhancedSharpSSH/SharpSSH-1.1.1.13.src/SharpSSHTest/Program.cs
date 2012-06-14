@@ -15,8 +15,11 @@ namespace SharepSSHTest
             sftp.Connect();
             //sftp.Put(@"D:\temp\blog\feed.csv", "[PATH OF FILE ON SERVER]");
             //sftp.Delete("[PATH OF FILE ON SERVER]");
-            bool existence = sftp.Exists("./Desktop");
-            sftp.Mkdir("Desktop/a/b/c/d/e/f/g");
+            Console.WriteLine(String.Join("\n", sftp.GetFileList("Desktop")));
+            foreach (long size in sftp.GetFileSizes("Desktop"))
+            {
+                Console.WriteLine(Convert.ToString(size));
+            }
             sftp.Close();
         }
     }
