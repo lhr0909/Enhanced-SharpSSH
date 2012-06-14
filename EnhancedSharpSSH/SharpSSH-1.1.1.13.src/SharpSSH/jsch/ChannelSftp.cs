@@ -2452,8 +2452,8 @@ namespace Tamir.SharpSsh.jsch
         private String localAbsolutePath(String path)
         {
             if (isLocalAbsolutePath(path)) return path;
-            if (lcwd.endsWith(file_separator)) return lcwd + path;
-            return lcwd + file_separator + path;
+            if (lcwd.endsWith(file_separator)) return System.IO.Path.GetFullPath(lcwd + path);
+            return System.IO.Path.GetFullPath(lcwd + file_separator + path);
         }
 
         public class LsEntry
