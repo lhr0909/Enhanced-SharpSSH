@@ -44,7 +44,7 @@ namespace Tamir.SharpSsh
 	{
 		private bool m_recursive = false;
 		private bool m_verbos = false;
-		private bool m_cancelled = false;
+		private bool m_canceled = false;
 
 		public Scp(string host, string user, string password)
 			: base(host, user, password)
@@ -70,7 +70,7 @@ namespace Tamir.SharpSsh
 		}
 
 		/// <summary>
-		/// Gets or sets a value indicating the default recursive transfer behaviour
+		/// Gets or sets a value indicating the default recursive transfer behavior
 		/// </summary>
 		public bool Recursive
 		{
@@ -89,7 +89,7 @@ namespace Tamir.SharpSsh
 
 		public override void Cancel()
 		{
-			m_cancelled = true;
+			m_canceled = true;
 		}
 
 		/// <summary>
@@ -102,7 +102,7 @@ namespace Tamir.SharpSsh
 
 			Channel channel=null;
 			Stream server = null;
-			m_cancelled=false;
+			m_canceled=false;
 
 			SCP_ConnectTo(out channel, out server, dir, true);
 			SCP_EnterIntoDir(server, dir);
@@ -143,7 +143,7 @@ namespace Tamir.SharpSsh
 
 			Channel channel=null;
 			Stream server = null;
-			m_cancelled=false;
+			m_canceled=false;
  
 			try
 			{
@@ -196,7 +196,7 @@ namespace Tamir.SharpSsh
 				{
 					SCP_SendFile(server, file, Path.GetFileName( file));
 				}
-				if(m_cancelled)
+				if(m_canceled)
 				{
 					return;
 				}
@@ -238,7 +238,7 @@ namespace Tamir.SharpSsh
 
 			Channel channel=null;
 			Stream server = null;
-			m_cancelled=false;
+			m_canceled=false;
 			int filesize=0;
 			String filename=null;
 			string cmd = null;
@@ -262,7 +262,7 @@ namespace Tamir.SharpSsh
 				//parse scp commands
 				while((c=='D')||(c=='C')||(c=='E'))
 				{
-					if(m_cancelled)
+					if(m_canceled)
 						break;
 
 					cmd = ""+(char)c;
@@ -313,7 +313,7 @@ namespace Tamir.SharpSsh
 							dir==null?localPath:dir+"/"+filename,
 							filesize);
 
-						if(m_cancelled)
+						if(m_canceled)
 							break;
 						
 						// send '\0'
@@ -442,7 +442,7 @@ namespace Tamir.SharpSsh
 			FileStream fis=File.OpenRead(src);
 			byte[] buf=new byte[1024*10*2];
 
-			while(!m_cancelled)
+			while(!m_canceled)
 			{
 				int len=fis.Read(buf, 0, buf.Length);
 				if(len<=0) break;
@@ -452,7 +452,7 @@ namespace Tamir.SharpSsh
 			}
 			fis.Close();
 
-			if(m_cancelled)
+			if(m_canceled)
 				return;
 
 			// send '\0'
@@ -464,7 +464,7 @@ namespace Tamir.SharpSsh
 				SendEndMessage(src, dst,copied,filesize, "Transfer ended with an error.");
 				throw new SshTransferException("Unknow error during file transfer.");				
 			}
-			SendEndMessage(src, dst, copied, filesize, "Transfer completed successfuly ("+copied+" bytes).");
+			SendEndMessage(src, dst, copied, filesize, "Transfer completed successfully ("+copied+" bytes).");
 		}
 
 		/// <summary>
@@ -482,7 +482,7 @@ namespace Tamir.SharpSsh
 			int foo;
 			int filesize=size;
 			byte[] buf = new byte[1024];
-			while(!m_cancelled)
+			while(!m_canceled)
 			{
 				if(buf.Length<filesize) foo=buf.Length;
 				else foo=filesize;
@@ -494,10 +494,10 @@ namespace Tamir.SharpSsh
 				if(filesize==0) break;
 			}
 			fos.Close();
-			if(m_cancelled)
+			if(m_canceled)
 				return;
 			SCP_CheckAck(server);
-			SendEndMessage(rfile, lfile, copied, size, "Transfer completed successfuly ("+filesize+" bytes).");
+			SendEndMessage(rfile, lfile, copied, size, "Transfer completed successfully ("+filesize+" bytes).");
 		}
 
 		/// <summary>
