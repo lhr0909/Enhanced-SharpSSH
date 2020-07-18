@@ -270,7 +270,7 @@ namespace Tamir.SharpSsh.jsch
 								);
 							if(foo)
 							{
-								try{dir.Create(); userinfo.showMessage(dir.Name+" has been succesfully created.\nPlease check its access permission.");}
+								try{dir.Create(); userinfo.showMessage(dir.Name+" has been successfully created.\nPlease check its access permission.");}
 								catch
 								{
 									userinfo.showMessage(dir.Name+" has not been created.");

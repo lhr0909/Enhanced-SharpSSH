@@ -138,7 +138,7 @@
 //				{
 //					throw new Exception("Unknow error during file transfer.");				
 //				}
-//				SendEndMessage(copied, filesize, "Transfer completed successfuly ("+copied+" bytes).");
+//				SendEndMessage(copied, filesize, "Transfer completed successfully ("+copied+" bytes).");
 //				try{channel.close();}
 //				catch{}
 //			}
@@ -264,7 +264,7 @@
 //
 //				// send '\0'
 //				buf[0]=0; outs.Write(buf, 0, 1); outs.Flush();
-//				SendEndMessage(copied, size, "Transfer completed successfuly ("+copied+" bytes).");
+//				SendEndMessage(copied, size, "Transfer completed successfully ("+copied+" bytes).");
 //			}
 //			catch(Exception e)
 //			{

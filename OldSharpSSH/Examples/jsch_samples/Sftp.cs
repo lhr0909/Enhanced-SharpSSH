@@ -34,7 +34,7 @@ namespace sharpSshTest.jsch_samples
 
 				if (!inForm.PromptForInput())
 				{
-					Console.WriteLine("Cancelled");
+					Console.WriteLine("Canceled");
 					return;
 				}
 				String host = inForm.textBox1.Text;
@@ -415,7 +415,7 @@ namespace sharpSshTest.jsch_samples
 				if(percent>=this.c*100/max){ return true; }
 				percent=this.c*100/max;
 
-				string note = ("Transfering... [Elapsed time: "+elapsed+"]");   
+				string note = ("Transferring... [Elapsed time: "+elapsed+"]");   
 
 				bar.Update((int)this.c, (int)max, note);
 				return true;

@@ -38,7 +38,7 @@ namespace Tamir.SharpSsh
 	public class Sftp : SshTransferProtocolBase
 	{
 		private MyProgressMonitor m_monitor;
-		private bool cancelled = false;
+		private bool canceled = false;
 
 		public Sftp(string sftpHost, string user, string password)
 			: base(sftpHost, user, password)
@@ -69,7 +69,7 @@ namespace Tamir.SharpSsh
 
 		public override void Cancel()
 		{
-			cancelled = true;
+			canceled = true;
 		}
 
 		//Get
@@ -97,7 +97,7 @@ namespace Tamir.SharpSsh
 
 		public override void Get(string fromFilePath, string toFilePath)
 		{
-			cancelled=false;
+			canceled=false;
 			SftpChannel.get(fromFilePath, toFilePath, m_monitor, ChannelSftp.OVERWRITE);
 		}
 
@@ -126,7 +126,7 @@ namespace Tamir.SharpSsh
 
 		public override void Put(string fromFilePath, string toFilePath)
 		{
-			cancelled=false;
+			canceled=false;
 			SftpChannel.put(fromFilePath, toFilePath, m_monitor, ChannelSftp.OVERWRITE);
 		}
 
@@ -191,7 +191,7 @@ namespace Tamir.SharpSsh
 			public override bool count(long c)
 			{
 				this.transferred += c;
-				string note = ("Transfering... [Elapsed time: " + elapsed + "]");
+				string note = ("Transferring... [Elapsed time: " + elapsed + "]");
 				m_sftp.SendProgressMessage(src, dest, (int)transferred, (int)total, note);
 				return !m_sftp.cancelled;
 			}

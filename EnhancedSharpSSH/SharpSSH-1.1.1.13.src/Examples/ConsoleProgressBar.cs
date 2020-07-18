@@ -132,7 +132,7 @@ namespace sharpSshTest
 		}
 
 		/// <summary>
-		/// Return a string representation of the given n. The string will be comma seperated (e.g. 19,500,200)
+		/// Return a string representation of the given n. The string will be comma separated (e.g. 19,500,200)
 		/// </summary>
 		private string comma(int n)
 		{

@@ -13,7 +13,7 @@ namespace sharpSshTest.jsch_samples
 	/// <summary>
 	/// This program will demonstrate the stream forwarding. The given Java
 	/// I/O streams will be forwared to the given remote host and port on
-	/// the remote side.  It is simmilar to the -L option of ssh command,
+	/// the remote side.  It is similar to the -L option of ssh command,
 	/// but you don't have to assign and open a local tcp port.
 	/// You will be asked username, hostname, host:hostport and passwd. 
 	/// If everything works fine, System.in and System.out streams will be

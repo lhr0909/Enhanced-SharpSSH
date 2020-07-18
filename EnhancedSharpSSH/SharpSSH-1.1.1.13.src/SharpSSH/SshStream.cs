@@ -242,7 +242,7 @@ namespace Tamir.SharpSsh
 		}
 
 		/// <summary>
-		/// Gets or sets a value indicating wether this Steam sould remove the terminal emulation's escape sequence characters from the response String.
+		/// Gets or sets a value indicating wether this Steam could remove the terminal emulation's escape sequence characters from the response String.
 		/// </summary>
 		public bool RemoveTerminalEmulationCharacters
 		{
